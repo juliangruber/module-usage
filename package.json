@@ -1,7 +1,7 @@
 {
   "name": "module-usage",
   "description": "See how a module is used in npm",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "repository": {
     "type": "git",
     "url": "git://github.com/juliangruber/module-usage.git"
