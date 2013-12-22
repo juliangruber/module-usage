@@ -1,3 +1,13 @@
 var usage = require('./');
+var name = process.argv[2] || 'intersect';
 
-usage('intersect').on('data', console.log).on('end', console.log.bind(console, 'end'));
+usage(name).on('data', function(u) {
+  console.log('%s (%s)', u.dependant, u.file);
+  console.log();
+  console.log(indent(u.code));
+  console.log();
+});
+
+function indent(txt) {
+  return txt.replace(/^/gm, '    ');
+}
