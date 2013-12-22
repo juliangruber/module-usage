@@ -25,11 +25,11 @@ Some usages of [intersect](http://npmjs.org/intersect):
 
 ```bash
 $ node example.js intersect
-bower-json (package/lib/util/isComponent.js)
+bower-json (lib/util/isComponent.js)
 
     var intersect = require('intersect');
 
-bower-json (package/lib/util/isComponent.js)
+bower-json (lib/util/isComponent.js)
 
     common = intersect(keys, [
         'repo',
@@ -40,11 +40,11 @@ bower-json (package/lib/util/isComponent.js)
         'demo'
     ]);
 
-roole-prefixer (package/lib/LinearGradientPrefixer.js)
+roole-prefixer (lib/LinearGradientPrefixer.js)
 
     var intersect = require('intersect');
 
-roole-prefixer (package/lib/LinearGradientPrefixer.js)
+roole-prefixer (lib/LinearGradientPrefixer.js)
 
     var prefixes = intersect(this.prefixes, [
         'webkit',
@@ -59,25 +59,25 @@ Some usages of [mkdirp](http://npmjs.org/mkdirp):
 
 ```bash
 $ node example.js mkdirp
-ae86 (package/lib/engine.js)
+ae86 (lib/engine.js)
 
     var mkdirp = require('mkdirp');
 
-ae86 (package/lib/engine.js)
+ae86 (lib/engine.js)
 
     mkdirp(p.join(dir, page).replace(/(\/[^\/]+$|\\[^\\]+$)/, ''), '0755', function (err) {
         'callback...';
     });
     
-amerigo (package/vespucci.js)
+amerigo (vespucci.js)
 
     var mkdirpSync = require('mkdirp').sync;
 
-amerigo (package/vespucci.js)
+amerigo (vespucci.js)
 
     mkdirpSync(folderpath);
 
-amerigo (package/vespucci.js)
+amerigo (pvespucci.js)
 
     mkdirpSync(padpath);
 
