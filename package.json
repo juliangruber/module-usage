@@ -1,7 +1,7 @@
 {
   "name": "module-usage",
   "description": "See how a module is used in npm",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "repository": {
     "type": "git",
     "url": "git://github.com/juliangruber/module-usage.git"
@@ -19,7 +19,7 @@
     "dependants-stream": "0.0.0",
     "npm-files": "0.0.0",
     "astw": "0.0.0",
-    "module-calls": "0.0.0",
+    "module-calls": "~0.1.1",
     "debug": "~0.7.4"
   },
   "devDependencies": {
