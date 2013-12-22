@@ -89,6 +89,13 @@ amerigo (package/vespucci.js)
 
 Create a readable stream that emits usage objects with keys `dependant`, `file` and `code`. Pass `opts.registry` to overwrite the default npm registry location.
 
+## CLI
+
+```bash
+$ npm install -g module-usage
+$ module-usage intersect
+```
+
 ## Installation
 
 ```bash
