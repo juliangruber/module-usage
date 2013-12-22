@@ -1,0 +1,37 @@
+{
+  "name": "module-usage",
+  "description": "See how a module is used in npm",
+  "version": "0.0.0",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/juliangruber/module-usage.git"
+  },
+  "homepage": "https://github.com/juliangruber/module-usage",
+  "main": "index.js",
+  "scripts": {
+    "test": "tape test/*.js"
+  },
+  "dependencies": {
+    "stream-to": "~0.3.1",
+    "dependants-stream": "0.0.0",
+    "npm-files": "0.0.0",
+    "astw": "0.0.0",
+    "module-calls": "0.0.0"
+  },
+  "devDependencies": {
+    "tape": "*"
+  },
+  "keywords": [
+    "usage",
+    "ast",
+    "analysis",
+    "npm",
+    "report"
+  ],
+  "author": {
+    "name": "Julian Gruber",
+    "email": "mail@juliangruber.com",
+    "url": "http://juliangruber.com"
+  },
+  "license": "MIT"
+}
