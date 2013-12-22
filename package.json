@@ -8,6 +8,9 @@
   },
   "homepage": "https://github.com/juliangruber/module-usage",
   "main": "index.js",
+  "bin": {
+    "module-usage": "bin/module-usage.js"
+  },
   "scripts": {
     "test": "tape test/*.js"
   },
