@@ -44,7 +44,7 @@ function usage(name, opts, fn) {
       .on('end', done);
   };
 
-  return dependants(name, registry)
+  return dependants(name, { registry: registry })
     .on('error', out.emit.bind(out, 'error'))
     .pipe(out);
 }
