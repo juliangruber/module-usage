@@ -3,6 +3,7 @@ var Transform = require('stream').Transform;
 var dependants = require('dependants-stream');
 var files = require('npm-files');
 var moduleCalls = require('module-calls');
+var debug = require('debug')('module-usage');
 
 module.exports = usage;
 
@@ -31,13 +32,21 @@ function usage(name, opts, fn) {
         if (!/\.js$/.test(file.props.path)) return;
         streamTo.buffer(file, function(err, buf) {
           if (err) return done(err);
-        
-          moduleCalls(name, buf.toString())
-            .forEach(function(call) {
-              call.dependant = dependant;
-              call.file = file.props.path;
-              out.push(call);
-            });
+          
+          debug('analyzing %s (%s)', dependant, file.props.path);
+          
+          try {
+            var calls = moduleCalls(name, buf.toString());
+          } catch (err) {
+            debug('syntax error in %s (%s)', dependant, file.props.path);
+            return;
+          }
+            
+          calls.forEach(function(call) {
+            call.dependant = dependant;
+            call.file = file.props.path;
+            out.push(call);
+          });
         });
       })
       .on('error', done)
