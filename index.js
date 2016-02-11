@@ -25,35 +25,46 @@ function usage(name, opts, fn) {
   var registry = opts.registry || 'http://registry.npmjs.org';
   
   var out = Transform({ objectMode: true });
+  var filesStream;
   
   out._transform = function(dependant, enc, done) {
-    files(dependant, { registry: registry })
-      .on('file', function(file) {
-        if (!/\.js$/.test(file.props.path)) return;
-        streamTo.buffer(file, function(err, buf) {
-          if (err) return done(err);
+    filesStream = files(dependant, { registry: registry });
+    filesStream.on('file', function(file) {
+      if (!/\.js$/.test(file.props.path)) return;
+      streamTo.buffer(file, function(err, buf) {
+        if (err) return done(err);
+        
+        debug('analyzing %s (%s)', dependant, file.props.path);
+        
+        try {
+          var calls = moduleCalls(name, buf.toString());
+        } catch (err) {
+          debug('syntax error in %s (%s)', dependant, file.props.path);
+          return;
+        }
           
-          debug('analyzing %s (%s)', dependant, file.props.path);
-          
-          try {
-            var calls = moduleCalls(name, buf.toString());
-          } catch (err) {
-            debug('syntax error in %s (%s)', dependant, file.props.path);
-            return;
-          }
-            
-          calls.forEach(function(call) {
-            call.dependant = dependant;
-            call.file = file.props.path;
-            out.push(call);
-          });
+        calls.forEach(function(call) {
+          call.dependant = dependant;
+          call.file = file.props.path;
+          out.push(call);
         });
-      })
-      .on('error', done)
-      .on('end', done);
+      });
+    });
+    filesStream.on('error', done);
+    filesStream.on('end', done);
   };
 
-  return dependants(name, { registry: registry })
-    .on('error', out.emit.bind(out, 'error'))
-    .pipe(out);
+  out.destroy = function() {
+    depStream.destroy();
+    if (filesStream) filesStream.destroy();
+    process.nextTick(function() {
+      out.emit('close');
+    });
+  };
+
+  var depStream = dependants(name, { registry: registry });
+  depStream.on('error', out.emit.bind(out, 'error'))
+  depStream.pipe(out);
+
+  return out;
 }
