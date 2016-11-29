@@ -15,12 +15,12 @@
     "test": "tape test/*.js"
   },
   "dependencies": {
-    "astw": "0.0.0",
-    "debug": "~0.7.4",
+    "astw": "2.0.0",
+    "debug": "~2.3.3",
     "dependants-stream": "^1.0.1",
     "module-calls": "~1.0.0",
     "npm-files": "^1.0.0",
-    "stream-to": "~0.3.1"
+    "stream-to": "~2.0.0"
   },
   "devDependencies": {
     "tape": "*"
