@@ -16,7 +16,7 @@
   },
   "dependencies": {
     "astw": "2.0.0",
-    "debug": "~2.3.3",
+    "debug": "~2.6.1",
     "dependants-stream": "^1.0.1",
     "module-calls": "~1.0.0",
     "npm-files": "^1.0.0",
