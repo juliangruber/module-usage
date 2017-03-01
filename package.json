@@ -15,7 +15,7 @@
     "test": "tape test/*.js"
   },
   "dependencies": {
-    "astw": "2.0.0",
+    "astw": "2.1.0",
     "debug": "~2.3.3",
     "dependants-stream": "^1.0.1",
     "module-calls": "~1.0.0",
