@@ -1,4 +1,4 @@
-var streamTo = require('stream-to');
+var getRawBody = require('raw-body');
 var Transform = require('stream').Transform;
 var dependants = require('dependants-stream');
 var files = require('npm-files');
@@ -31,7 +31,7 @@ function usage(name, opts, fn) {
     filesStream = files(dependant, { registry: registry });
     filesStream.on('file', function(file) {
       if (!/\.js$/.test(file.props.path)) return;
-      streamTo.buffer(file, function(err, buf) {
+      getRawBody(file, function(err, buf) {
         if (err) return done(err);
         
         debug('analyzing %s (%s)', dependant, file.props.path);

@@ -20,7 +20,7 @@
     "dependants-stream": "^1.0.1",
     "module-calls": "~1.0.0",
     "npm-files": "^1.0.0",
-    "stream-to": "~2.0.0"
+    "raw-body": "^2.3.2"
   },
   "devDependencies": {
     "tape": "*"
